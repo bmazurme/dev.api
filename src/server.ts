@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 
 import livereload from 'livereload';
 import connectLivereload from 'connect-livereload';
@@ -35,8 +35,7 @@ const helmetConfig = {
 };
 
 const port = process.env.PORT ?? 3000;
-const pth = 'mongodb://0.0.0.0:27017/devapi';
-// process.env.PTH ??
+const pth = process.env.PTH ?? 'mongodb://127.0.0.1:27017/devapi';
 
 const app = express();
 
@@ -45,7 +44,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-mongoose.connect(pth);
+mongoose.connect(pth, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+} as ConnectOptions);
 
 app.use(requestLogger);
 

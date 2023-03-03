@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0.1
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - awesome
+
+  devapi:
+    depends_on:
+      - mongodb
+    build:
+      context: .
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=$DB_HOST
+      - DB_NAME=$DB_NAME
+      - DB_PORT=$DB_PORT
+      - NODE_ENV=$NODE_ENV
+      - PTH=$PTH
+      - PORT=3000
+      - EMAIL_USER=$EMAIL_USER
+      - EMAIL_PASS=$EMAIL_PASS
+      - EMAIL_HOST=$EMAIL_HOST
+      - EMAIL_PORT=$EMAIL_PORT
+      - EMAIL_FROM=$EMAIL_FROM
+      - HOST=$HOST
+    networks:
+      - awesome
+
+networks:
+  awesome:
+    driver: bridge

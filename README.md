@@ -11,10 +11,26 @@
 ![Mongoose](https://img.shields.io/badge/-Mongoose-black?style=flat-square&logo=mongoose)
 
 ### Installation
-...
+Clone the repository on your computer:
+
+`git clone git@github.com:bmazurme/dev.api.git`
+
+Install dependencies: `npm install`
+
+Run dev mode: `npm run dev`
+
+Build project: `npm run build`
+
+Clear project: `npm run clear`
+
+Run eslint: `npm run eslint`
+
+Launch: `npm start`
 
 Implemented features:
-- [ ] Auth
+- [X] Signup, signin, logout
+- [X] Password confirm, reset, update
+- [X] User info get, update
 
 ### Docker
 
@@ -23,6 +39,22 @@ Implemented features:
 `docker-compose up`
 
 `docker-compose stop`
+
+`docker system prune -a`
+
+`docker push cr.yandex/${REGISTRY_ID}/devapi:latest`
+
+`docker pull cr.yandex/${REGISTRY_ID}/devapi:latest`
+
+`docker run cr.yandex/${REGISTRY_ID}/devapi:latest`
+
+`docker run -d -p 80:3000 cr.yandex/${REGISTRY_ID}/devapi:latest`
+
+[https://cloud.yandex.ru/docs/container-registry/tutorials/run-docker-on-vm#before-begin](https://cloud.yandex.ru/docs/container-registry/tutorials/run-docker-on-vm#before-begin)
+
+`docker exec -it container_ID_or_name /bin/bash`
+
+`docker-compose down --rmi all`
 
 ### NGINX
 

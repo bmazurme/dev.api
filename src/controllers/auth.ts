@@ -39,7 +39,7 @@ const createUser = (req: Request, res: Response, next: NextFunction) => {
       password: hash,
     }))
     .then((user: IUser | undefined) => {
-      // sendMail(email, token, login, CONFIRM);
+      sendMail(email, token, login, CONFIRM);
 
       res.send({
         _id: user?._id,
