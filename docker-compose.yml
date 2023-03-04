@@ -12,6 +12,7 @@ services:
   devapi:
     depends_on:
       - mongodb
+    platform: linux/amd64
     build:
       context: .
     restart: always
