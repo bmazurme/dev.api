@@ -64,5 +64,5 @@ jobs:
           vm-disk-size: 30GB
           vm-zone-id: ru-central1-a
           vm-platform-id: standard-v2
-          user-data-path: .yc/user-data.yml
+          user-data-path: ./.yc/user-data.yml
           docker-compose-path: ./.yc/docker-compose.yml
