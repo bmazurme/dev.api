@@ -61,7 +61,7 @@ jobs:
           vm-cores: 2
           vm-memory: 2GB
           vm-core-fraction: 5
-          vm-disk-size: 15GB
+          vm-disk-size: 30GB
           vm-zone-id: ru-central1-a
           vm-platform-id: standard-v2
           user-data-path: .yc/user-data.yml
