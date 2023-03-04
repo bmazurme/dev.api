@@ -10,26 +10,10 @@ services:
       - awesome
 
   devapi:
-    depends_on:
-      - mongodb
-    build:
-      context: .
+    image: {{ env.IMAGE_NAME }}
     restart: always
     ports:
       - 3000:3000
-    environment:
-      - DB_HOST: {{ env.DB_HOST }}
-      - DB_NAME: {{ env.$DB_NAME }}
-      - DB_PORT: {{ env.DB_PORT }}
-      - NODE_ENV: {{ env.NODE_ENV }}
-      - PTH: {{ env.PTH }}
-      - PORT: 3000
-      - EMAIL_USER: {{ env.EMAIL_USER }}
-      - EMAIL_PASS: {{ env.EMAIL_PASS }}
-      - EMAIL_HOST: {{ env.EMAIL_HOST }}
-      - EMAIL_PORT: {{ env.EMAIL_PORT }}
-      - EMAIL_FROM: {{ env.EMAIL_FROM }}
-      - HOST: {{ env.HOST }}
     networks:
       - awesome
 
