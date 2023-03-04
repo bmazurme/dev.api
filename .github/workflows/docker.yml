@@ -11,8 +11,18 @@ on:
 env:
   NODE_ENV: production
   PORT: 3000
+  EMAIL_PORT: 465
+  DB_PORT: 27017
   IMAGE_NAME: cr.yandex/${{ secrets.CR_REGISTRY }}/${{ secrets.CR_REPO }}:latest
-
+  
+  PTH: ${{ secrets.PTH }}
+  EMAIL_USER: ${{ secrets.EMAIL_USER }}
+  EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+  EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+  EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+  HOST: ${{ secrets.HOST }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_NAME: ${{ secrets.DB_NAME }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
