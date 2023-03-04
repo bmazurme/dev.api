@@ -9,6 +9,7 @@
 ![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=mongodb)
 ![Mongoose](https://img.shields.io/badge/-Mongoose-black?style=flat-square&logo=mongoose)
+![Git](https://img.shields.io/badge/-Git-black?style=flat-square&logo=git)
 
 ### Installation
 Clone the repository on your computer:
@@ -29,8 +30,9 @@ Launch: `npm start`
 
 Implemented features:
 - [X] Signup, signin, logout
-- [X] Password confirm, reset, update
+- [X] Password confirm send email, reset, update
 - [X] User info get, update
+- [X] CI/CD GitHub Actions
 
 ### Docker
 
