@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "dev": "webpack --watch --mode development",
     "clear": "rm -rf dist/",
-    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; husky install",
+    "prepare": "husky install .config/husky",
     "eslint": "npx eslint ./src"
   },
   "repository": {
