@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import { config as dotEnvConfig } from 'dotenv';
 
 import { ObjectId } from 'mongoose';
+import CHARACTERS, { CONFIRM } from 'utils/constants';
 import sendMail from './sendMail';
 import User, { IUser } from '../models/user';
 import DEV_JWT_SECRET from '../utils/devConfig';
@@ -13,9 +14,6 @@ import {
 } from '../errors';
 
 dotEnvConfig();
-
-const CONFIRM = 1;
-const CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const createUser = (req: Request, res: Response, next: NextFunction) => {
   const {

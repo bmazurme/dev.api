@@ -3,9 +3,7 @@ import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const sendMail = (userEmail: string, token: string, login: string, type: number) => {
   const email = userEmail;
-  console.log(email);
   const confirmationCode = token;
-
   const options: SMTPTransport.Options = {
     host: process.env.EMAIL_HOST,
     port: Number(process.env.EMAIL_PORT) || 465,
@@ -17,7 +15,6 @@ const sendMail = (userEmail: string, token: string, login: string, type: number)
   };
 
   const mail = nodemailer.createTransport(options);
-
   const mailOptions = {
     from: process.env.EMAIL_FROM,
     to: email,

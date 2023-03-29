@@ -4,7 +4,6 @@ import authRoute from './auth';
 import userRoute from './user';
 import passRoute from './password';
 import passwordAuth from './passwordAuth';
-
 import authMiddleware from '../middlewares/auth';
 
 const router = Router();

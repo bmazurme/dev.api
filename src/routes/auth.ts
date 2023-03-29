@@ -5,7 +5,6 @@ import {
   createUserController,
   confirmEmailController,
 } from '../controllers';
-
 import { validateLoginData, validateRegistrData } from '../utils/validator';
 import { UrlsApi } from '../utils/routers';
 

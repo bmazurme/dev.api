@@ -2,11 +2,9 @@
 import { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 
+import CHARACTERS, { RESET } from 'utils/constants';
 import User, { IUser } from '../models/user';
 import sendMail from './sendMail';
-
-const CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const RESET = 2;
 
 const updatePassword = (req: Request, res: Response, next: NextFunction) => {
   const { password, newPassword, email } = req.body;
@@ -39,7 +37,6 @@ const resetPassword = (req: Request, res: Response, next: NextFunction) => {
 
       const { login } = user!;
       user!.confirmationCode = token;
-
       user!.save();
       sendMail(email, token, login, RESET);
 
@@ -50,9 +47,7 @@ const resetPassword = (req: Request, res: Response, next: NextFunction) => {
 
 const newPassword = (req: Request, res: Response, next: NextFunction) => {
   const { password, token } = req.body;
-  User.findOne({
-    confirmationCode: token,
-  })
+  User.findOne({ confirmationCode: token })
     .then((user: IUser | null | undefined) => {
       bcrypt.hash(password, 10)
         .then((hash: string) => {
