@@ -5,8 +5,7 @@ import {
   createUserController,
   confirmEmailController,
 } from '../controllers';
-import { validateLoginData, validateRegistrData } from '../utils/validator';
-import { UrlsApi } from '../utils/routers';
+import { validateLoginData, validateRegistrData, UrlsApi } from '../utils';
 
 const router = Router();
 

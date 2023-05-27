@@ -1,6 +1,6 @@
 import { CorsOptions } from 'cors';
 
-import { METHODS, ALLOWED_HEADERS, WHITE_LIST } from './constCors';
+import { METHODS, ALLOWED_HEADERS, WHITE_LIST } from './const-cors';
 
 type CallbackType = (arg: Error | null, bool?: boolean) => [];
 type StaticOrigin = boolean | string | RegExp | (boolean | string | RegExp)[];
@@ -24,4 +24,4 @@ const corsOptions: CorsOptions = {
   allowedHeaders: ALLOWED_HEADERS,
 };
 
-export default corsOptions;
+export { corsOptions };

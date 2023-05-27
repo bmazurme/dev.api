@@ -2,9 +2,9 @@
 import { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 
-import CHARACTERS, { RESET } from 'utils/constants';
+import { RESET, CHARACTERS } from '../utils';
 import User, { IUser } from '../models/user';
-import sendMail from './sendMail';
+import sendMail from './send-mail';
 
 const updatePassword = (req: Request, res: Response, next: NextFunction) => {
   const { password, newPassword, email } = req.body;

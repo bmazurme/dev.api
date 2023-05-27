@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-import { validateUserData, validateUserAvatar } from '../utils/validator';
 import {
   logoutController,
   updateUserController,
   getCurrentUserController,
   updateUserAvatarController,
 } from '../controllers';
-import { UrlsApi } from '../utils/routers';
+
+import { UrlsApi, validateUserData, validateUserAvatar } from '../utils';
 
 const router = Router();
 

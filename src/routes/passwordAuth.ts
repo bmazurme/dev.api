@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { newPasswordController, resetPasswordController } from '../controllers';
-import { UrlsApi } from '../utils/routers';
+import { UrlsApi } from '../utils';
 
 const router = Router();
 

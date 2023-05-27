@@ -5,4 +5,4 @@ const limiter = rateLimit({
   max: 1000,
 });
 
-export default limiter;
+export { limiter };

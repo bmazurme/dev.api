@@ -1,8 +1,7 @@
 import { Router } from 'express';
 
 import { updatePasswordController } from '../controllers';
-import { validatePassword } from '../utils/validator';
-import { UrlsApi } from '../utils/routers';
+import { validatePassword, UrlsApi } from '../utils';
 
 const router = Router();
 

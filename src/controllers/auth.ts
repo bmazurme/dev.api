@@ -5,10 +5,9 @@ import bcrypt from 'bcryptjs';
 import { config as dotEnvConfig } from 'dotenv';
 
 import { ObjectId } from 'mongoose';
-import CHARACTERS, { CONFIRM } from 'utils/constants';
-import sendMail from './sendMail';
+import { CONFIRM, CHARACTERS, DEV_JWT_SECRET } from '../utils';
+import sendMail from './send-mail';
 import User, { IUser } from '../models/user';
-import DEV_JWT_SECRET from '../utils/devConfig';
 import {
   UnauthorizedError, BadRequestError, ConflictError, NotFoundError,
 } from '../errors';
