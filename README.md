@@ -12,21 +12,28 @@
 ![Git](https://img.shields.io/badge/-Git-black?style=flat-square&logo=git)
 
 ### Installation
-Clone the repository on your computer:
+```bash
+# Clone the repository on your computer:
+$ git clone git@github.com:bmazurme/dev.api.git
 
-`git clone git@github.com:bmazurme/dev.api.git`
+# Install dependencies:
+$ npm install
 
-Install dependencies: `npm install`
+# Run dev mode:
+$ npm run dev
 
-Run dev mode: `npm run dev`
+# Build project:
+$ npm run build
 
-Build project: `npm run build`
+# Clear project:
+$ npm run clear
 
-Clear project: `npm run clear`
+# Run eslint:
+$ npm run eslint
 
-Run eslint: `npm run eslint`
-
-Launch: `npm start`
+# Launch:
+$ npm start
+```
 
 Implemented features:
 - [X] Signup, signin, logout
