@@ -86,11 +86,12 @@ Implemented features:
 `sudo systemctl reload nginx`
 
 ### SSL
+```bash
+$ sudo apt update
 
-`sudo apt update`
+$ sudo apt install -y certbot python3-certbot-nginx
 
-`sudo apt install -y certbot python3-certbot-nginx`
+$ sudo certbot --nginx
 
-`sudo certbot --nginx`
-
-`sudo systemctl reload nginx`
+$ sudo systemctl reload nginx
+```
