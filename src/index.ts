@@ -11,13 +11,13 @@ import { config as dotEnvConfig } from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-import { requestLogger, errorLogger } from './middlewares/logger';
+import { requestLogger, errorLogger } from './middlewares/logger-middleware';
 import { corsOptions, limiter } from './utils';
 
 import index from './routes';
 import { NotFoundError } from './errors';
 
-import errorHandler from './middlewares/errorHandler';
+import errorHandler from './middlewares/error-handler-middleware';
 
 dotEnvConfig();
 
