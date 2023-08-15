@@ -16,4 +16,7 @@ export const UrlsApi = {
     RESET: '/password/reset',
     NEW: '/password/new',
   },
+  PROJECT: {
+    ADD: '/projects',
+  },
 };
