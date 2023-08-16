@@ -2,20 +2,28 @@ import {
   login as loginController,
   createUser as createUserController,
   confirmEmail as confirmEmailController,
-} from './auth';
+} from './auth-controller';
 
 import {
   updatePassword as updatePasswordController,
   resetPassword as resetPasswordController,
   newPassword as newPasswordController,
-} from './password';
+} from './password-controller';
 
 import {
   getCurrentUser as getCurrentUserController,
   updateUserAvatar as updateUserAvatarController,
   updateUser as updateUserController,
   logout as logoutController,
-} from './user';
+} from './user-controller';
+
+import { addProject, getProjects, updateProject } from './project-controller';
+import {
+  addBook, getBooks, updateBook, deleteBook,
+} from './book-controller';
+import {
+  addBlock, getBlocks, updateBlock, deleteBlock,
+} from './block-controller';
 
 export {
   loginController,
@@ -28,4 +36,15 @@ export {
   updateUserController,
   getCurrentUserController,
   updateUserAvatarController,
+  addProject,
+  getProjects,
+  updateProject,
+  addBook,
+  getBooks,
+  updateBook,
+  deleteBook,
+  addBlock,
+  getBlocks,
+  updateBlock,
+  deleteBlock,
 };
