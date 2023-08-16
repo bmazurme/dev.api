@@ -6,8 +6,8 @@ import { config as dotEnvConfig } from 'dotenv';
 
 import { ObjectId } from 'mongoose';
 import { CONFIRM, CHARACTERS, DEV_JWT_SECRET } from '../utils';
-import sendMail from './send-mail';
-import User, { IUser } from '../models/user';
+import sendMail from './send-mail-controller';
+import User, { IUser } from '../models/user-model';
 import {
   UnauthorizedError, BadRequestError, ConflictError, NotFoundError,
 } from '../errors';
