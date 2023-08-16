@@ -17,6 +17,14 @@ export const UrlsApi = {
     NEW: '/password/new',
   },
   PROJECT: {
-    ADD: '/projects',
+    INDEX: '/projects',
+  },
+  BOOK: {
+    INDEX: '/books',
+    DELETE: '/books/:id',
+  },
+  BLOCK: {
+    INDEX: '/block',
+    DELETE: '/block/:id',
   },
 };
