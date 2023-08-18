@@ -6,7 +6,6 @@ export interface IBook extends Document {
   name: string;
   typeBook: string;
   projectId: Schema.Types.ObjectId;
-  // userId: Schema.Types.ObjectId;
 }
 
 export interface BookModel extends Model<IBook> {
@@ -18,13 +17,13 @@ const BookSchema = new Schema({
     type: String,
     required: true,
     minlength: 2,
-    // maxlength: 30,
+    maxlength: 30,
   },
   typeBook: {
     type: String,
     required: true,
     minlength: 2,
-    // maxlength: 30,
+    maxlength: 30,
   },
   projectId: {
     type: Schema.Types.ObjectId,
