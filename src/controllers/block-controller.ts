@@ -9,55 +9,61 @@ import Blocks from '../models/block-model';
 
 dotEnvConfig();
 
-const addBlock = (req: any, res: Response, next: NextFunction) => {
-  const block = req.body;
+const addBlock = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const block = req.body;
+    const data = await Blocks.create({ ...block, userId: req.user._id });
 
-  Blocks.create({ ...block, userId: req.user._id })
-    .then((data) => res.status(200).send(data))
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const getBlocks = (req: any, res: Response, next: NextFunction) => {
-  const book = req.body;
+const getBlocks = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const book = req.body;
+    const data = await Blocks.find({ projectId: book.id });
 
-  Blocks.find({ projectId: book.id })
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Block not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Block not found'));
+    }
 
-      return res.send(data);
-    })
-    .catch(next);
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const updateBlock = (req: any, res: Response, next: NextFunction) => {
-  const { id, ...newData } = req.body;
-  const options = { new: true };
+const updateBlock = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const { id, ...newData } = req.body;
+    const options = { new: true };
+    const data = await Blocks.findByIdAndUpdate(id, newData, options);
 
-  Blocks.findByIdAndUpdate(id, newData, options)
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Block not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Block not found'));
+    }
 
-      return res.send(data);
-    })
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const deleteBlock = (req: any, res: Response, next: NextFunction) => {
-  const { id } = req.params;
+const deleteBlock = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const data = await Blocks.findByIdAndDelete(id);
 
-  Blocks.findByIdAndDelete(id)
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Block not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Block not found'));
+    }
 
-      return res.send({ message: `Block with id '${id}' has been deleted.` });
-    })
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
 export {
