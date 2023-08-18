@@ -3,7 +3,7 @@ import {
 } from 'mongoose';
 
 export interface IBlock extends Document {
-  projectId: Schema.Types.ObjectId;
+  bookId: Schema.Types.ObjectId;
   block: number;
   index: number;
   name: string;
@@ -14,13 +14,14 @@ export interface BlockModel extends Model<IBlock> {
 }
 
 const BlockSchema = new Schema({
-  projectId: {
+  bookId: {
     type: Schema.Types.ObjectId,
     ref: 'book',
     required: true,
   },
-  block: {
-    type: Number,
+  blockId: {
+    type: Schema.Types.ObjectId,
+    ref: 'book',
     required: true,
   },
   index: {
