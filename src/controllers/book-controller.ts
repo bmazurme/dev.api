@@ -9,55 +9,61 @@ import Books from '../models/book-model';
 
 dotEnvConfig();
 
-const addBook = (req: any, res: Response, next: NextFunction) => {
-  const book = req.body;
+const addBook = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const book = req.body;
+    const data = await Books.create({ ...book, userId: req.user._id });
 
-  Books.create({ ...book, userId: req.user._id })
-    .then((data) => res.status(200).send(data))
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const getBooks = (req: any, res: Response, next: NextFunction) => {
-  const project = req.body;
+const getBooks = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const project = req.body;
+    const data = await Books.find({ projectId: project.id });
 
-  Books.find({ projectId: project.id })
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Book not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Book not found'));
+    }
 
-      return res.send(data);
-    })
-    .catch(next);
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const updateBook = (req: any, res: Response, next: NextFunction) => {
-  const { id, ...newData } = req.body;
-  const options = { new: true };
+const updateBook = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const { id, ...newData } = req.body;
+    const options = { new: true };
+    const data = await Books.findByIdAndUpdate(id, newData, options);
 
-  Books.findByIdAndUpdate(id, newData, options)
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Book not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Book not found'));
+    }
 
-      return res.send(data);
-    })
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const deleteBook = (req: any, res: Response, next: NextFunction) => {
-  const { id } = req.params;
+const deleteBook = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const data = await Books.findByIdAndDelete(id);
 
-  Books.findByIdAndDelete(id)
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Book not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Book not found'));
+    }
 
-      return res.send({ message: `Book with id '${id}' has been deleted.` });
-    })
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
 export {
