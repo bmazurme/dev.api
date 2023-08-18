@@ -9,39 +9,45 @@ import Projects from '../models/project-model';
 
 dotEnvConfig();
 
-const addProject = (req: any, res: Response, next: NextFunction) => {
-  const project = req.body;
+const addProject = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const project = req.body;
+    const data = await Projects.create({ ...project, userId: req.user._id });
 
-  Projects.create({ ...project, userId: req.user._id })
-    .then((data) => res.status(200).send(data))
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const getProjects = (req: any, res: Response, next: NextFunction) => {
-  Projects.find({ userId: req.user._id })
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Project not found'));
-      }
+const getProjects = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const data = await Projects.find({ userId: req.user._id });
 
-      return res.send(data);
-    })
-    .catch(next);
+    if (!data) {
+      return next(new NotFoundError('Project not found'));
+    }
+
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
-const updateProject = (req: any, res: Response, next: NextFunction) => {
-  const { id, ...newData } = req.body;
-  const options = { new: true };
+const updateProject = async (req: any, res: Response, next: NextFunction) => {
+  try {
+    const { id, ...newData } = req.body;
+    const options = { new: true };
+    const data = await Projects.findByIdAndUpdate(id, newData, options);
 
-  Projects.findByIdAndUpdate(id, newData, options)
-    .then((data) => {
-      if (!data) {
-        return next(new NotFoundError('Project not found'));
-      }
+    if (!data) {
+      return next(new NotFoundError('Project not found'));
+    }
 
-      return res.send(data);
-    })
-    .catch((err) => next(err));
+    return res.status(200).send(data);
+  } catch (err) {
+    return next(err);
+  }
 };
 
 export { addProject, getProjects, updateProject };
