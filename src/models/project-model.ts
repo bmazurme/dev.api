@@ -5,11 +5,11 @@ import {
 export interface IProject extends Document {
   value: string;
   label: string;
-  owner: Schema.Types.ObjectId;
+  userId: Schema.Types.ObjectId;
 }
 
 export interface ProjectModel extends Model<IProject> {
-  findProjectByUser: (id: string) => Promise<IProject | undefined>;
+  findProjectById: (id: string) => Promise<IProject | undefined>;
 }
 
 const ProjectSchema = new Schema({
@@ -17,13 +17,13 @@ const ProjectSchema = new Schema({
     type: String,
     required: true,
     minlength: 2,
-    // maxlength: 30,
+    maxlength: 30,
   },
   label: {
     type: String,
     required: true,
     minlength: 2,
-    // maxlength: 30,
+    maxlength: 30,
   },
   userId: {
     type: Schema.Types.ObjectId,
