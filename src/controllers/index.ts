@@ -24,6 +24,7 @@ import {
 import {
   addBlock, getBlocks, updateBlock, deleteBlock,
 } from './block-controller';
+import { addTest, updateTest } from './test-controller';
 
 export {
   loginController,
@@ -47,4 +48,6 @@ export {
   getBlocks,
   updateBlock,
   deleteBlock,
+  addTest,
+  updateTest,
 };
