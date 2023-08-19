@@ -27,4 +27,7 @@ export const UrlsApi = {
     INDEX: '/block',
     DELETE: '/block/:id',
   },
+  TEST: {
+    INDEX: '/test',
+  },
 };
